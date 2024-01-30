@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Almarai:wght@400&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>sliding radio button</title>
+  </head>
+  <body>
+    <div class="radio-wrapper">
+      <form method="get" action="">
+        <div class="radio-group">
+          <div class="input-group-animate">
+            <input
+              type="radio"
+              name="duration"
+              value="1 month"
+              checked
+              id="one-month"
+            />
+            <label for="one-month">Green</label>
+          </div>
+          <div class="input-group-animate">
+            <input
+              type="radio"
+              name="duration"
+              value="half Year"
+              id="half-year"
+            />
+            <label for="half-year">Blue</label>
+          </div>
+          <div class="input-group-animate">
+            <input type="radio" name="duration" value="1 Year" id="one-year" />
+            <label for="one-year">Pink</label>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
