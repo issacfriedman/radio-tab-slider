@@ -1,20 +1,34 @@
-const labels = document.querySelectorAll(".input-group-animate label");
-const radios = document.querySelectorAll(
-  ".input-group-animate input[type=radio]"
-);
-
 const radioChecked = document.querySelector(
   ".input-group-animate input[type=radio]:checked"
 );
-const inputGroupParent = document.querySelector(
-  ".input-group-animate"
-)?.parentElement;
+const inputGroups = document.querySelectorAll(".input-group-animate");
 
-const background = document.createElement("div");
-background.classList.add("sliding-background");
-inputGroupParent.appendChild(background);
+const inputGroupParents = Array.from(inputGroups).reduce((acc, inputGroup) => {
+  if (!acc.includes(inputGroup.parentElement)) {
+    acc.push(inputGroup.parentElement);
+  }
+  return acc;
+}, []);
 
-const moveBackground = (width, position, count) => {
+inputGroupParents?.forEach((parent) => parent.classList.add("radio-group"));
+
+inputGroupParents.forEach((parent) => {
+  const background = document.createElement("div");
+  background.classList.add("sliding-background");
+  parent?.appendChild(background);
+});
+
+const radios = inputGroupParents.map((parent) =>
+  parent.querySelectorAll(".input-group-animate input[type=radio]")
+);
+
+const labels = inputGroupParents.map((parent) =>
+  parent.querySelectorAll(".input-group-animate label")
+);
+
+console.log(labels);
+
+const moveBackground = (width, position, count, background) => {
   count = Number(count);
 
   if (count === 0) {
@@ -30,14 +44,21 @@ const moveBackground = (width, position, count) => {
   background.style.transform = `translate(${position}px)`;
 };
 
-radios.forEach((radio, i) => {
-  radio.dataset.postion = i;
-  radio.addEventListener("change", (e) => {
-    if (radio.checked) {
-      const width = labels[i].clientWidth;
-      const position = labels[i].offsetLeft;
-      moveBackground(width, position, i);
-    }
+radios.forEach((radios, radiosIndex) => {
+  const background = radios[0]
+    .closest(".radio-group")
+    .querySelector(".sliding-background");
+  console.log("before loop ");
+  radios.forEach((radio, i) => {
+    radio.dataset.postion = i;
+    console.log("radio ", radio, "index ", i);
+    radio.addEventListener("change", (e) => {
+      if (radio.checked) {
+        const width = labels[radiosIndex][i].clientWidth;
+        const position = labels[radiosIndex][i].offsetLeft;
+        moveBackground(width, position, i, background);
+      }
+    });
   });
 });
 
