@@ -16,8 +16,8 @@
   <body>
     <div class="radio-wrapper">
       <form method="get" action="">
-        <div>
-          <div class="input-group-animate">
+        <div data-radio-slider>
+          <div>
             <input
               type="radio"
               name="duration"
@@ -27,37 +27,40 @@
             />
             <label for="green">Green</label>
           </div>
-          <div class="input-group-animate">
+          <div>
             <input type="radio" name="duration" value="blue" id="blue" />
             <label for="blue">Blue</label>
           </div>
-          <div class="input-group-animate">
+          <div>
             <input type="radio" name="duration" value="1 Year" id="pink" />
-            <label for="pink">Pink make it long </label>
+            <label for="pink">Pink </label>
           </div>
         </div>
-        <div>
-          <div class="input-group-animate">
+        <div data-radio-slider-2>
+          <div>
             <input
               type="radio"
-              name="duration"
+              name="color"
               value="1 month"
               checked
-              id="vilot"
+              id="violet"
             />
-            <label for="vilot">vilot</label>
+            <label for="violet">violet</label>
           </div>
-          <div class="input-group-animate">
-            <input type="radio" name="duration" value="half Year" id="indigo" />
+          <div>
+            <input type="radio" name="color" value="half Year" id="indigo" />
             <label for="indigo">indigo</label>
           </div>
-          <div class="input-group-animate">
-            <input type="radio" name="duration" value="1 Year" id="teal" />
+          <div>
+            <input type="radio" name="color" value="1 Year" id="teal" />
             <label for="teal">teal</label>
           </div>
         </div>
       </form>
     </div>
+    <script src="./colorTohax.js"></script>
+    <script src="./contrastColor.js"></script>
+    <script src="./RadioSlider.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
